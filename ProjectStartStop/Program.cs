@@ -15,6 +15,10 @@ builder.Services.AddDbContext<ProjectDbContext>(
             x => x.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
 
 builder.Services.AddScoped<IProjectService, ProjectService>();
+builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
+{
+    builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+}));
 
 var app = builder.Build();
 
@@ -24,6 +28,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("corsapp");
 
 app.UseHttpsRedirection();
 
