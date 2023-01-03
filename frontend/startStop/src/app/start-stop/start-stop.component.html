@@ -1,10 +1,36 @@
-<form>
+<div>
     <div class="center">
 
-        <button class="btn-start" (click)="start()" mat-raised-button>{{btnStart}}</button>
-        <!-- <button mat-button (click)="openDialog()">{{btnStop}}</button> -->
-        <button mat-button (click)="openDialog()">Open dialog</button>
+        <button class="btn-start" *ngIf="this.isStartButtonVisible" (click)="start()"
+            mat-raised-button>{{btnStart}}</button>
 
+        <button type="button" *ngIf="this.isStopButtonVisible" class="btn-start btn btn-primary" (click)="stop()"
+            data-bs-toggle="modal" data-bs-target="#exampleModal">
+            {{btnStop}}
+        </button>
+
+        <form [formGroup]="projectForm">
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Stop timer</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <span>Project name </span>
+                            <input class="form-control" [formControl]="projectForm.name" maxlength="50" type="text" />
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                                (click)="StopTimer()">Stop timer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 
     <div *ngIf="!isLoading">
@@ -15,7 +41,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Start</th>
                     <th scope="col">Stop</th>
-                    <th scope="col">Duration</th>
+                    <th scope="col">Duration(sec)</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,14 +56,4 @@
         </table>
     </div>
 
-</form>
-
-<!-- <mat-dialog-content class="mat-typography">
-    <h3>Develop across all platforms</h3>
-    <p>Learn one way to build applications with Angular and reuse your code and abilities to build
-        apps for any deployment target. For web, mobile web, native mobile and native desktop.</p>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Cancel</button>
-    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
-</mat-dialog-actions> -->
+</div>

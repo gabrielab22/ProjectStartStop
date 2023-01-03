@@ -10,6 +10,6 @@
 
         public DateTime End { get; set; }
 
-        public DateTime Duration { get; set; }
+        public string Duration { get; set; }
     }
 }

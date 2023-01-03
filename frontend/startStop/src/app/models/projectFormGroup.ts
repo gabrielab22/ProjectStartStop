@@ -8,12 +8,12 @@ export class ProjectFormGroup extends FormGroup {
     get name(): FormControl {
         return <FormControl>this.get('name');
     }
-    get startProject(): FormControl {
-        return <FormControl>this.get('startProject');
+    get start(): FormControl {
+        return <FormControl>this.get('start');
     }
 
-    get endProject(): FormControl {
-        return <FormControl>this.get('endProject');
+    get end(): FormControl {
+        return <FormControl>this.get('end');
     }
 
     get duration(): FormControl {

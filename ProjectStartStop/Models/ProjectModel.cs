@@ -4,8 +4,8 @@
     {   
         public Guid Id{ get; set; }
         public string? Name { get; set; }
-        public DateTime StartProject { get; set; }
-        public DateTime EndProject { get; set; }
-        public DateTime Duration { get; set; }
+        public DateTime Start { get; set; }
+        public DateTime End { get; set; }
+        public string Duration { get; set; }
     }
 }

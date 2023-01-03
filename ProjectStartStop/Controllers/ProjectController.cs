@@ -19,7 +19,7 @@ namespace ProjectStartStop.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Project>> AddProject(ProjectModel projectDto)
+        public async Task<ActionResult<Project>> AddProject(Project projectDto)
         {
 
             var result = await projectService.AddProject(projectDto);

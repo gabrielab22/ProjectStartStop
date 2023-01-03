@@ -17,13 +17,13 @@ namespace ProjectStartStop.Service
             this.dbContext = dbContext;
         }
 
-        public async Task<Project> AddProject(ProjectModel model)
+        public async Task<Project> AddProject(Project model)
         {
             var project = new Project()
             {
                Name = model.Name,
-               Start =  model.StartProject,
-               End = model.EndProject,
+               Start =  model.Start,
+               End = model.End,
                Duration = model.Duration, 
             };
 
